@@ -10,7 +10,6 @@ import java.time.Month;
 
 @Configuration
 public class CarConfig {
-
     @Bean
     CommandLineRunner commandLineRunner(CarRepository carRepository) {
         return args -> {

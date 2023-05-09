@@ -41,7 +41,6 @@ public class CarRepositoryTest {
         String model = "Polo";
         Optional<Car> selectedCar = carRepository.findAllByDateOfManufactureAndModel(dateOfManufacture, model);
         Optional<Car> selectedCar2 = carRepository.findAllByDateOfManufactureAndModel(dateOfManufacture, "Golf");
-
         Assertions.assertTrue(selectedCar.isPresent());
         Assertions.assertEquals(car, selectedCar.get());
         Assertions.assertFalse(selectedCar2.isPresent());

@@ -5,6 +5,7 @@ public enum ApplicationUserAuthority {
     CAR_WRITE("car:write");
 
     private final String permission;
+
     ApplicationUserAuthority(String permission) {
         this.permission = permission;
     }
