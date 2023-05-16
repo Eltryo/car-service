@@ -11,9 +11,4 @@ public class TemplateController {
     public String getLogin() {
         return "loginPage";
     }
-
-    @GetMapping("api/v1/cars")
-    public String getCars() {
-        return "cars";
-    }
 }
