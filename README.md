@@ -9,7 +9,7 @@ A RESTful API for car storage.
 
 ### Requirements
 
-* [Java RRE](https://www.java.com/de/download/manual.jsp)
+* [JRE](https://www.java.com/de/download/manual.jsp)
 
 ### Installation
 
