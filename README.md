@@ -12,5 +12,5 @@ A RESTful API for car storage.
 
 Clone the repository and run the following command in the project directory
 ```sh
-java -jar car-rest-api-0.0.1-SNAPSHOT.jar
+java -jar target/car-service-0.0.1-SNAPSHOT.jar
 ```
