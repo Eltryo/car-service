@@ -1,4 +1,4 @@
-# car-service-api
+# car-service
 
 ### Description
 
