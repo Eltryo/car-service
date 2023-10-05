@@ -6,7 +6,7 @@ A RESTful API for car storage.
 
 ### Requirements
 
-* [JRE](https://www.java.com/de/download/manual.jsp)
+* [JDK](https://www.oracle.com/java/technologies/downloads/)
 
 ### Installation
 
