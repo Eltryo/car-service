@@ -8,7 +8,7 @@ A RESTful API for car storage.
 
 * [JDK](https://www.oracle.com/java/technologies/downloads/)
 
-### Installation
+### Usage
 
 Clone the repository and run the following command in the project directory
 ```sh

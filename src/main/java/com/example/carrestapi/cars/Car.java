@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 import static javax.persistence.GenerationType.AUTO;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "cars")

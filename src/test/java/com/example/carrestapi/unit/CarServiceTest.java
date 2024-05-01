@@ -48,9 +48,11 @@ public class CarServiceTest {
     @Test
     void addCarTest() {
         carService.addCar(car);
+
         ArgumentCaptor<Car> carArgumentCaptor = ArgumentCaptor.forClass(Car.class);
         Mockito.verify(carRepository).save(carArgumentCaptor.capture());
         Car capturedCar = carArgumentCaptor.getValue();
+
         Assertions.assertThat(car).isEqualTo(capturedCar);
     }
 
@@ -58,6 +60,7 @@ public class CarServiceTest {
     void addAlreadyExistingCarTest() {
         Optional<Car> selectedCar = carRepository.findAllByDateOfManufactureAndModel(car.getDateOfManufacture(), car.getModel());
         given(selectedCar).willReturn(Optional.of(car));
+
         Assertions.assertThatThrownBy(() -> carService.addCar(car))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessage("Car already exists");
@@ -74,10 +77,13 @@ public class CarServiceTest {
     void deleteCartTest() {
         given(carRepository.findById(car.getId()))
                 .willReturn(Optional.of(car));
+
         carService.deleteCar(car.getId());
+
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
         Mockito.verify(carRepository).deleteById(longArgumentCaptor.capture());
         Long capturedCarId = longArgumentCaptor.getValue();
+
         Assertions.assertThat(car.getId()).isEqualTo(capturedCarId);
     }
 
@@ -93,10 +99,13 @@ public class CarServiceTest {
         int updatedHorsePower = 200;
         given(carRepository.findById(car.getId()))
                 .willReturn(Optional.of(car));
+
         carService.updateCar(car.getId(), updatedHorsePower);
+
         ArgumentCaptor<Car> carArgumentCaptor = ArgumentCaptor.forClass(Car.class);
         Mockito.verify(carRepository).save(carArgumentCaptor.capture());
         Car capturedCar = carArgumentCaptor.getValue();
+
         Assertions.assertThat(200).isEqualTo(capturedCar.getHorsePower());
         Assertions.assertThat(car.getId()).isEqualTo(capturedCar.getId());
     }

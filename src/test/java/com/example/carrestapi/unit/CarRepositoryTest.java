@@ -39,8 +39,10 @@ public class CarRepositoryTest {
     void findAllByDateOfManufactureAndModelTest() {
         LocalDate dateOfManufacture = LocalDate.of(2019, Month.JANUARY, 1);
         String model = "Polo";
+
         Optional<Car> selectedCar = carRepository.findAllByDateOfManufactureAndModel(dateOfManufacture, model);
         Optional<Car> selectedCar2 = carRepository.findAllByDateOfManufactureAndModel(dateOfManufacture, "Golf");
+
         Assertions.assertTrue(selectedCar.isPresent());
         Assertions.assertEquals(car, selectedCar.get());
         Assertions.assertFalse(selectedCar2.isPresent());
