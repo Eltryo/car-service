@@ -12,5 +12,5 @@ A RESTful API for car storage.
 
 Clone the repository and run the following command in the project directory
 ```sh
-docker compose up
+docker compose up -d
 ```
