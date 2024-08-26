@@ -1,5 +1,6 @@
 package com.example.carrestapi.cars;
 
+import com.example.carrestapi.entities.Car;
 import com.example.carrestapi.repository.CarRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

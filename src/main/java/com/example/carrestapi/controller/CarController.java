@@ -1,6 +1,6 @@
 package com.example.carrestapi.controller;
 
-import com.example.carrestapi.cars.Car;
+import com.example.carrestapi.entities.Car;
 import com.example.carrestapi.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

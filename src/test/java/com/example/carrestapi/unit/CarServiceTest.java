@@ -1,6 +1,6 @@
 package com.example.carrestapi.unit;
 
-import com.example.carrestapi.cars.Car;
+import com.example.carrestapi.entities.Car;
 import com.example.carrestapi.repository.CarRepository;
 import com.example.carrestapi.service.CarService;
 import org.assertj.core.api.Assertions;

@@ -1,6 +1,6 @@
 package com.example.carrestapi.service;
 
-import com.example.carrestapi.cars.Car;
+import com.example.carrestapi.entities.Car;
 import com.example.carrestapi.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

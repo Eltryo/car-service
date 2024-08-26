@@ -1,6 +1,6 @@
 package com.example.carrestapi.repository;
 
-import com.example.carrestapi.cars.Car;
+import com.example.carrestapi.entities.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
