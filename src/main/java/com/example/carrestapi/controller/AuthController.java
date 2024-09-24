@@ -32,11 +32,12 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody @Validated SignUpDto data) throws Exception {
+        System.out.println("signup handler entered");
         authService.signUp(data);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PostMapping("signin")
+    @PostMapping("/signin")
     public ResponseEntity<JwtDto> signIn(@RequestBody @Validated SignInDto data) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.getLogin(), data.getPassword());
         var authUser = authenticationManager.authenticate(usernamePassword);
