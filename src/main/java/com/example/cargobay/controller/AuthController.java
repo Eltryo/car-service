@@ -1,4 +1,4 @@
-package com.example.carrestapi.controller;
+package com.example.cargobay.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.carrestapi.dtos.JwtDto;
-import com.example.carrestapi.dtos.SignInDto;
-import com.example.carrestapi.dtos.SignUpDto;
-import com.example.carrestapi.entities.User;
-import com.example.carrestapi.security.TokenProvider;
-import com.example.carrestapi.service.AuthService;
+import com.example.cargobay.dtos.JwtDto;
+import com.example.cargobay.dtos.SignInDto;
+import com.example.cargobay.dtos.SignUpDto;
+import com.example.cargobay.entities.User;
+import com.example.cargobay.security.TokenProvider;
+import com.example.cargobay.service.AuthService;
 
 @RestController
 @RequestMapping("/api/v1/auth")

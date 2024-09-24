@@ -1,4 +1,4 @@
-package com.example.carrestapi.controller;
+package com.example.cargobay.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

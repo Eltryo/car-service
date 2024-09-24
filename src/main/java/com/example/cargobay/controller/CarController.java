@@ -1,7 +1,7 @@
-package com.example.carrestapi.controller;
+package com.example.cargobay.controller;
 
-import com.example.carrestapi.entities.Car;
-import com.example.carrestapi.service.CarService;
+import com.example.cargobay.entities.Car;
+import com.example.cargobay.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

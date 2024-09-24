@@ -1,8 +1,8 @@
-package com.example.carrestapi.unit;
+package com.example.cargobay.unit;
 
-import com.example.carrestapi.entities.Car;
-import com.example.carrestapi.repository.CarRepository;
-import com.example.carrestapi.service.CarService;
+import com.example.cargobay.entities.Car;
+import com.example.cargobay.repository.CarRepository;
+import com.example.cargobay.service.CarService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

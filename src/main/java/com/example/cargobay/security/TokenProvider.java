@@ -1,4 +1,4 @@
-package com.example.carrestapi.security;
+package com.example.cargobay.security;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -11,7 +11,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.example.carrestapi.entities.User;
+import com.example.cargobay.entities.User;
 
 @Service
 public class TokenProvider {

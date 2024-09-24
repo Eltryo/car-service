@@ -1,6 +1,6 @@
-package com.example.carrestapi.dtos;
+package com.example.cargobay.dtos;
 
-import com.example.carrestapi.security.ApplicationUserRole;
+import com.example.cargobay.security.ApplicationUserRole;
 
 import lombok.Data;
 

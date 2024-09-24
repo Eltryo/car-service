@@ -1,7 +1,7 @@
-package com.example.carrestapi.unit;
+package com.example.cargobay.unit;
 
-import com.example.carrestapi.entities.Car;
-import com.example.carrestapi.repository.CarRepository;
+import com.example.cargobay.entities.Car;
+import com.example.cargobay.repository.CarRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

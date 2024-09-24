@@ -1,4 +1,4 @@
-package com.example.carrestapi.security;
+package com.example.cargobay.security;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.carrestapi.repository.UserRepository;
+import com.example.cargobay.repository.UserRepository;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter {

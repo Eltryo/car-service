@@ -1,4 +1,4 @@
-package com.example.carrestapi.entities;
+package com.example.cargobay.entities;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.carrestapi.security.ApplicationUserRole;
+import com.example.cargobay.security.ApplicationUserRole;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

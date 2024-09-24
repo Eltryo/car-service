@@ -1,4 +1,4 @@
-package com.example.carrestapi.service;
+package com.example.cargobay.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.carrestapi.dtos.SignUpDto;
-import com.example.carrestapi.entities.User;
-import com.example.carrestapi.repository.UserRepository;
+import com.example.cargobay.dtos.SignUpDto;
+import com.example.cargobay.entities.User;
+import com.example.cargobay.repository.UserRepository;
 
 @Service
 public class AuthService implements UserDetailsService {

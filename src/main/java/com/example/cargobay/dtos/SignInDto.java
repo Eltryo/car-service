@@ -1,4 +1,4 @@
-package com.example.carrestapi.dtos;
+package com.example.cargobay.dtos;
 
 import lombok.Data;
 

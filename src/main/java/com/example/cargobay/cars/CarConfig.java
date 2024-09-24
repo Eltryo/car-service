@@ -1,7 +1,7 @@
-package com.example.carrestapi.cars;
+package com.example.cargobay.cars;
 
-import com.example.carrestapi.entities.Car;
-import com.example.carrestapi.repository.CarRepository;
+import com.example.cargobay.entities.Car;
+import com.example.cargobay.repository.CarRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
