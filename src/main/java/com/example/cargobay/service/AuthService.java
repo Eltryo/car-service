@@ -1,6 +1,8 @@
 package com.example.cargobay.service;
 
+import com.example.cargobay.utility.exceptions.AppException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,10 +24,10 @@ public class AuthService implements UserDetailsService {
         return user;
     }
 
-    public UserDetails signUp(SignUpDto data) throws Exception {
+    public UserDetails signUp(SignUpDto data) {
         var user = userRepository.findByLogin(data.getLogin());
         if(user != null) {
-            throw new Exception("Username already exists");
+            throw new AppException("Username already exists", HttpStatus.BAD_REQUEST);
         }
 
         var encryptedPassword = new BCryptPasswordEncoder().encode(data.getPassword());

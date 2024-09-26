@@ -32,7 +32,6 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody @Validated SignUpDto data) throws Exception {
-        System.out.println("signup handler entered");
         authService.signUp(data);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
