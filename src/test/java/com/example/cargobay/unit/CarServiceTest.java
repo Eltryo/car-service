@@ -1,6 +1,6 @@
 package com.example.cargobay.unit;
 
-import com.example.cargobay.entities.Car;
+import com.example.cargobay.entity.Car;
 import com.example.cargobay.repository.CarRepository;
 import com.example.cargobay.service.CarService;
 import org.assertj.core.api.Assertions;

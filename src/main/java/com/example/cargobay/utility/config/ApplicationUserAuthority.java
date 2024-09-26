@@ -1,4 +1,4 @@
-package com.example.cargobay.security;
+package com.example.cargobay.utility.config;
 
 public enum ApplicationUserAuthority {
     CAR_READ("car:read"),

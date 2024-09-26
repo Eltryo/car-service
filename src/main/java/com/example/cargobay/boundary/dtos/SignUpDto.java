@@ -1,6 +1,6 @@
-package com.example.cargobay.dtos;
+package com.example.cargobay.boundary.dtos;
 
-import com.example.cargobay.security.ApplicationUserRole;
+import com.example.cargobay.utility.config.ApplicationUserRole;
 
 import lombok.Data;
 

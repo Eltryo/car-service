@@ -1,6 +1,6 @@
 package com.example.cargobay.utility.exceptions;
 
-import com.example.cargobay.dtos.ErrorResponseDto;
+import com.example.cargobay.boundary.controller.dtos.ErrorResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

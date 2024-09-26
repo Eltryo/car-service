@@ -1,6 +1,6 @@
-package com.example.cargobay.controller;
+package com.example.cargobay.boundary.controller;
 
-import com.example.cargobay.entities.Car;
+import com.example.cargobay.entity.Car;
 import com.example.cargobay.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

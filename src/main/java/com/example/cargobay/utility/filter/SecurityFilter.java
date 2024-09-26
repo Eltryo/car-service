@@ -1,4 +1,4 @@
-package com.example.cargobay.security;
+package com.example.cargobay.utility.filter;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.cargobay.utility.config.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,7 +27,6 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
         throws ServletException, IOException {
-        System.out.println("SecurityFilter");
         var token = this.recoverToken(request);
         if (token != null) {
             var login = tokenProvider.validateToken(token);

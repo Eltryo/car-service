@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.cargobay.dtos.SignUpDto;
-import com.example.cargobay.entities.User;
+import com.example.cargobay.boundary.dtos.SignUpDto;
+import com.example.cargobay.entity.User;
 import com.example.cargobay.repository.UserRepository;
 
 @Service

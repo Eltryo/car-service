@@ -1,4 +1,4 @@
-package com.example.cargobay.dtos;
+package com.example.cargobay.boundary.controller.dtos;
 
 import lombok.Data;
 

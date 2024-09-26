@@ -1,4 +1,4 @@
-package com.example.cargobay.entities;
+package com.example.cargobay.entity;
 
 import static javax.persistence.GenerationType.AUTO;
 

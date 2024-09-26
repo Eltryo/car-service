@@ -1,5 +1,6 @@
-package com.example.cargobay.security;
+package com.example.cargobay.utility.config;
 
+import com.example.cargobay.utility.filter.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,6 @@ public class AuthConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        System.out.println("SecurityFilterChain");
         return httpSecurity
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

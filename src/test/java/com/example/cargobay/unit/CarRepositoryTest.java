@@ -1,6 +1,6 @@
 package com.example.cargobay.unit;
 
-import com.example.cargobay.entities.Car;
+import com.example.cargobay.entity.Car;
 import com.example.cargobay.repository.CarRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
