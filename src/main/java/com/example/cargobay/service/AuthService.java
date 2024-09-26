@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.cargobay.boundary.dtos.SignUpDto;
+import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.entity.User;
 import com.example.cargobay.repository.UserRepository;
 
@@ -24,14 +24,14 @@ public class AuthService implements UserDetailsService {
         return user;
     }
 
-    public UserDetails signUp(SignUpDto data) {
-        var user = userRepository.findByLogin(data.getLogin());
+    public UserDetails signUp(SignUpRequestDto data) {
+        var user = userRepository.findByLogin(data.getUsername());
         if(user != null) {
             throw new AppException("Username already exists", HttpStatus.BAD_REQUEST);
         }
 
         var encryptedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
-        var newUser = new User(data.getLogin(), encryptedPassword, data.getRole());
+        var newUser = new User(data.getUsername(), encryptedPassword, data.getRole());
 
         return userRepository.save(newUser);
     }

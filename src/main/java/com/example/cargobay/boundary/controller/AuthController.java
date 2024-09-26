@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.cargobay.boundary.controller.dtos.JwtDto;
 import com.example.cargobay.boundary.controller.dtos.SignInDto;
-import com.example.cargobay.boundary.dtos.SignUpDto;
+import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.entity.User;
 import com.example.cargobay.utility.config.TokenProvider;
 import com.example.cargobay.service.AuthService;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -27,7 +29,7 @@ public class AuthController {
     private final TokenProvider tokenProvider;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody @Validated SignUpDto data){
+    public ResponseEntity<?> signUp(@RequestBody @Valid SignUpRequestDto data){
         authService.signUp(data);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
