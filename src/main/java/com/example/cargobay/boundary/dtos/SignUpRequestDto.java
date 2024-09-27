@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class SignUpRequestDto {
-    @Pattern(regexp = "[A-Za-z0-9.]+@th-nuernberg\\.de", message = "TH-Mail")
+    @Pattern(regexp = "[A-Za-z0-9.]+@th-nuernberg\\.de")
     private String email;
 
     @NotBlank
@@ -19,5 +19,5 @@ public class SignUpRequestDto {
     @ValidPassword
     private String password;
 
-    // private ApplicationUserRole role;
+    private ApplicationUserRole role;
 }

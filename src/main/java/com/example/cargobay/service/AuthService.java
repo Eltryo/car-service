@@ -15,8 +15,11 @@ import com.example.cargobay.repository.UserRepository;
 
 @Service
 public class AuthService implements UserDetailsService {
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public AuthService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -24,15 +27,19 @@ public class AuthService implements UserDetailsService {
         return user;
     }
 
-    public UserDetails signUp(SignUpRequestDto data) {
+    public void signUp(SignUpRequestDto data) {
         var user = userRepository.findByLogin(data.getUsername());
         if(user != null) {
             throw new AppException("Username already exists", HttpStatus.BAD_REQUEST);
         }
 
-        var encryptedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
-        var newUser = new User(data.getUsername(), encryptedPassword, data.getRole());
+        var password = data.getPassword();
+        var encryptedPassword = new BCryptPasswordEncoder().encode(password);
 
-        return userRepository.save(newUser);
+        var username = data.getUsername();
+        var role = data.getRole();
+        var newUser = new User(username, encryptedPassword, role);
+
+        userRepository.save(newUser);
     }
 }

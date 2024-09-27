@@ -1,6 +1,6 @@
 package com.example.cargobay.utility.exceptions;
 
-import com.example.cargobay.boundary.controller.dtos.ErrorResponseDto;
+import com.example.cargobay.boundary.dtos.ErrorResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class RestExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<ErrorResponseDto> handleAppException(AppException exception) {
-        return ResponseEntity.status(exception.getStatus()).body(new ErrorResponseDto(exception.getMessage()));
+        var status = exception.getStatus();
+        var message = exception.getMessage();
+
+        return ResponseEntity
+                .status(status)
+                .body(new ErrorResponseDto(message));
     }
 }

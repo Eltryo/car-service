@@ -1,5 +1,6 @@
 package com.example.cargobay.boundary.controller;
 
+import com.example.cargobay.boundary.dtos.MessageResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cargobay.boundary.controller.dtos.JwtDto;
-import com.example.cargobay.boundary.controller.dtos.SignInDto;
+import com.example.cargobay.boundary.dtos.JwtDto;
+import com.example.cargobay.boundary.dtos.SignInDto;
 import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.entity.User;
 import com.example.cargobay.utility.config.TokenProvider;
@@ -29,9 +30,13 @@ public class AuthController {
     private final TokenProvider tokenProvider;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody @Valid SignUpRequestDto data){
+    public ResponseEntity<MessageResponseDto> signUp(@RequestBody @Valid SignUpRequestDto data){
         authService.signUp(data);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        var responseMessage = new MessageResponseDto("Sign up successful");
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(responseMessage);
     }
 
     @PostMapping("/signin")
