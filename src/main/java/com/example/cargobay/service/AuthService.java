@@ -27,7 +27,7 @@ public class AuthService implements UserDetailsService {
         return user;
     }
 
-    public void signUp(SignUpRequestDto data) {
+    public UserDetails signUp(SignUpRequestDto data) {
         var user = userRepository.findByLogin(data.getUsername());
         if(user != null) {
             throw new AppException("Username already exists", HttpStatus.BAD_REQUEST);
@@ -40,6 +40,6 @@ public class AuthService implements UserDetailsService {
         var role = data.getRole();
         var newUser = new User(username, encryptedPassword, role);
 
-        userRepository.save(newUser);
+        return userRepository.save(newUser);
     }
 }

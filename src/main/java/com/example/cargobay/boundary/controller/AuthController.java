@@ -30,7 +30,10 @@ public class AuthController {
     private final TokenProvider tokenProvider;
 
     @PostMapping("/signup")
-    public ResponseEntity<MessageResponseDto> signUp(@RequestBody @Valid SignUpRequestDto data){
+    public ResponseEntity<MessageResponseDto> signUp(
+            @RequestBody
+            @Valid
+            SignUpRequestDto data){
         authService.signUp(data);
         var responseMessage = new MessageResponseDto("Sign up successful");
 

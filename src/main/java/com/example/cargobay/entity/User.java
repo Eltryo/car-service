@@ -32,6 +32,7 @@ public class User implements UserDetails {
     private Long id;
     private String login;
     private String password;
+    private String email;
 
     @Enumerated(EnumType.STRING)
     private ApplicationUserRole role;
