@@ -1,8 +1,5 @@
 package com.example.cargobay.boundary.dtos;
 
-import com.example.cargobay.utility.config.ApplicationUserRole;
-
-import com.example.cargobay.utility.validation.ValidPassword;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,17 +8,11 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @Builder
-public class SignUpRequestDto {
+public class SignUpResponseDto {
     @NotBlank
     @Pattern(regexp = "[A-Za-z0-9.]+@\\w*\\.de")
     private String email;
 
     @NotBlank
     private String username;
-
-    @ValidPassword
-    private String password;
-
-    //TODO: fix provisioning of roles
-    private ApplicationUserRole role;
 }

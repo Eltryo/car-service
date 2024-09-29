@@ -1,9 +1,17 @@
 package com.example.cargobay.boundary.dtos;
 
+import com.example.cargobay.utility.validation.ValidPassword;
+import lombok.Builder;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
+@Builder
 public class SignInDto {
-    String login;
-    String password;
+    @NotBlank
+    private final String username;
+
+    @ValidPassword
+    private final String password;
 }
