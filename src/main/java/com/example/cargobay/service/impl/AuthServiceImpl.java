@@ -1,18 +1,16 @@
-package com.example.cargobay.service;
+package com.example.cargobay.service.impl;
 
 import com.example.cargobay.boundary.dtos.JwtDto;
 import com.example.cargobay.boundary.dtos.SignInDto;
 import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 import com.example.cargobay.boundary.mapper.SignUpDtoMapper;
+import com.example.cargobay.service.AuthService;
 import com.example.cargobay.utility.config.TokenProvider;
 import com.example.cargobay.utility.exceptions.AppException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +20,11 @@ import com.example.cargobay.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements UserDetailsService, AuthService{
+public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
     private final TokenProvider tokenProvider;
     private final SignUpDtoMapper signUpDtoMapper;
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByLogin(username);
-    }
 
     public SignUpResponseDto signUp(SignUpRequestDto data) {
         var user = userRepository.findByLogin(data.getUsername());

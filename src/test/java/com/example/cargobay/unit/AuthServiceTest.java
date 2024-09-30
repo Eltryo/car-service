@@ -6,7 +6,7 @@ import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 import com.example.cargobay.boundary.mapper.SignUpDtoMapper;
 import com.example.cargobay.entity.User;
 import com.example.cargobay.repository.UserRepository;
-import com.example.cargobay.service.AuthServiceImpl;
+import com.example.cargobay.service.impl.AuthServiceImpl;
 import com.example.cargobay.utility.config.ApplicationUserRole;
 import com.example.cargobay.utility.config.TokenProvider;
 import org.junit.jupiter.api.BeforeEach;

@@ -5,7 +5,6 @@ import com.example.cargobay.boundary.dtos.MessageResponseDto;
 import com.example.cargobay.boundary.dtos.SignInDto;
 import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.service.AuthService;
-import com.example.cargobay.service.AuthServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
