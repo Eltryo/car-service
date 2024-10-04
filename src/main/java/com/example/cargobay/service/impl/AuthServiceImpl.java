@@ -4,7 +4,9 @@ import com.example.cargobay.boundary.dtos.JwtDto;
 import com.example.cargobay.boundary.dtos.SignInDto;
 import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 import com.example.cargobay.boundary.mapper.SignUpDtoMapper;
+import com.example.cargobay.repository.RoleRepository;
 import com.example.cargobay.service.AuthService;
+import com.example.cargobay.utility.config.ApplicationUserRole;
 import com.example.cargobay.utility.config.TokenProvider;
 import com.example.cargobay.utility.exceptions.AppException;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final TokenProvider tokenProvider;
     private final SignUpDtoMapper signUpDtoMapper;
+    private final RoleRepository roleRepository;
 
     public SignUpResponseDto signUp(SignUpRequestDto data) {
         var user = userRepository.findByLogin(data.getUsername());
@@ -36,9 +39,11 @@ public class AuthServiceImpl implements AuthService {
         var encryptedPassword = new BCryptPasswordEncoder().encode(password);
 
         var username = data.getUsername();
-        var role = data.getRole();
         var email = data.getEmail();
-        var newUser = new User(username, encryptedPassword, role, email);
+
+        //todo: fix role handling
+        var role = roleRepository.findByName(ApplicationUserRole.USER);
+        var newUser = new User(username, encryptedPassword, role.getName(), email);
 
         var savedUser = userRepository.save(newUser);
         return signUpDtoMapper.toSignUpRequestDto(savedUser);

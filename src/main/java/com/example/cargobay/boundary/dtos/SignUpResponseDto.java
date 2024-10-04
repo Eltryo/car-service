@@ -1,5 +1,6 @@
 package com.example.cargobay.boundary.dtos;
 
+import com.example.cargobay.utility.config.ApplicationUserRole;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,4 +16,6 @@ public class SignUpResponseDto {
 
     @NotBlank
     private String username;
+
+    private ApplicationUserRole role;
 }

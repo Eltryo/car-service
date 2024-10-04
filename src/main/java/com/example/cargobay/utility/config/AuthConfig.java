@@ -41,7 +41,7 @@ public class AuthConfig {
     }
 
     @Bean
-    AuthenticationManager authenticationManager(UserDetailsService detailsService) {
+    AuthenticationManager authenticationManager(UserDetailsService detailsService){
         DaoAuthenticationProvider daoProvider = new DaoAuthenticationProvider();
         daoProvider.setUserDetailsService(detailsService);
         daoProvider.setPasswordEncoder(passwordEncoder());

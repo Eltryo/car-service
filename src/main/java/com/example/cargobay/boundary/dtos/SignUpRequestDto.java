@@ -1,7 +1,5 @@
 package com.example.cargobay.boundary.dtos;
 
-import com.example.cargobay.utility.config.ApplicationUserRole;
-
 import com.example.cargobay.utility.validation.ValidPassword;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +19,4 @@ public class SignUpRequestDto {
 
     @ValidPassword
     private String password;
-
-    //TODO: fix provisioning of roles
-    private ApplicationUserRole role;
 }

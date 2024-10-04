@@ -4,7 +4,9 @@ package com.example.cargobay.unit;
 import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 import com.example.cargobay.boundary.mapper.SignUpDtoMapper;
+import com.example.cargobay.entity.Role;
 import com.example.cargobay.entity.User;
+import com.example.cargobay.repository.RoleRepository;
 import com.example.cargobay.repository.UserRepository;
 import com.example.cargobay.service.impl.AuthServiceImpl;
 import com.example.cargobay.utility.config.ApplicationUserRole;
@@ -36,21 +38,30 @@ public class AuthServiceTest {
     @Mock
     private TokenProvider tokenProvider;
 
+    @Mock
+    private RoleRepository roleRepository;
+
     @InjectMocks
     private AuthServiceImpl authService;
 
     @BeforeEach
     void setUp() {
-        authService = new AuthServiceImpl(userRepository, authenticationManager, tokenProvider, signUpDtoMapper);
+        authService = new AuthServiceImpl(userRepository, authenticationManager, tokenProvider, signUpDtoMapper, roleRepository);
     }
 
     @Test
     void signUpTest() {
         //given
         User user = new User("user", "Password1!", ApplicationUserRole.USER, "user@gmail.de");
-        SignUpResponseDto dto = SignUpResponseDto.builder().username("user").email("user@gmail.de").build();
+        Role role = new Role(ApplicationUserRole.USER);
+        SignUpResponseDto dto = SignUpResponseDto.builder()
+                .username("user")
+                .email("user@gmail.de")
+                .role(ApplicationUserRole.USER)
+                .build();
 
         Mockito.when(userRepository.save(Mockito.any(User.class))).thenReturn(user);
+        Mockito.when(roleRepository.findByName(Mockito.any(ApplicationUserRole.class))).thenReturn(role);
         Mockito.when(signUpDtoMapper.toSignUpRequestDto(Mockito.any(User.class))).thenReturn(dto);
 
         //when
@@ -58,13 +69,13 @@ public class AuthServiceTest {
                 .email("user@gmail.com")
                 .username("user")
                 .password("Password1!")
-                .role(ApplicationUserRole.USER)
                 .build();
         SignUpResponseDto result = authService.signUp(david);
 
         //then
         Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
         Mockito.verify(signUpDtoMapper, Mockito.times(1)).toSignUpRequestDto(Mockito.any(User.class));
+        Mockito.verify(roleRepository, Mockito.times(1)).findByName(Mockito.any(ApplicationUserRole.class));
 
         assertThat(result).isEqualTo(dto);
     }
