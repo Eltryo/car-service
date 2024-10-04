@@ -2,7 +2,7 @@ package com.example.cargobay.unit;
 
 import com.example.cargobay.entity.Car;
 import com.example.cargobay.repository.CarRepository;
-import com.example.cargobay.service.CarService;
+import com.example.cargobay.control.service.CarService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

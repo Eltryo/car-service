@@ -1,4 +1,4 @@
-package com.example.cargobay.service;
+package com.example.cargobay.control.service;
 
 import com.example.cargobay.entity.Car;
 import com.example.cargobay.repository.CarRepository;

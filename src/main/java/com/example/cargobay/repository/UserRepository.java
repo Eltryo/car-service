@@ -5,6 +5,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.cargobay.entity.User;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User, Long> {
-    UserDetails findByLogin(String login);
+    Optional<UserDetails> findByLogin(String login);
 }

@@ -1,14 +1,11 @@
 package com.example.cargobay.entity;
 
-import java.util.Collection;
-
-import javax.persistence.*;
-
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.cargobay.utility.config.ApplicationUserRole;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Table
 @Entity(name = "users")
@@ -16,6 +13,7 @@ import com.example.cargobay.utility.config.ApplicationUserRole;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Builder
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +21,9 @@ public class User implements UserDetails {
     private String login;
     private String password;
     private String email;
+
+    @Setter
+    private boolean enabled;
 
     @Setter
     @ManyToOne
@@ -73,6 +74,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }

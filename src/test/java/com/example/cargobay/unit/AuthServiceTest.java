@@ -4,11 +4,13 @@ package com.example.cargobay.unit;
 import com.example.cargobay.boundary.dtos.SignUpRequestDto;
 import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 import com.example.cargobay.boundary.mapper.SignUpDtoMapper;
+import com.example.cargobay.control.service.VerificationService;
 import com.example.cargobay.entity.Role;
 import com.example.cargobay.entity.User;
 import com.example.cargobay.repository.RoleRepository;
 import com.example.cargobay.repository.UserRepository;
-import com.example.cargobay.service.impl.AuthServiceImpl;
+import com.example.cargobay.control.service.impl.AuthServiceImpl;
+import com.example.cargobay.repository.VerificationTokenRepository;
 import com.example.cargobay.utility.config.ApplicationUserRole;
 import com.example.cargobay.utility.config.TokenProvider;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,9 +19,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.AuthenticationManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -42,12 +44,22 @@ class AuthServiceTest {
     @Mock
     private RoleRepository roleRepository;
 
+    @Mock
+    private ApplicationEventPublisher applicationEventPublisher;
+
+    @Mock
+    private VerificationTokenRepository verificationTokenRepository;
+
+    @Mock
+    private VerificationService verificationService;
+
+    @InjectMocks
     private AuthServiceImpl authService;
 
-    @BeforeEach
-    public void setUp() {
-        authService = new AuthServiceImpl(userRepository, authenticationManager, tokenProvider, signUpDtoMapper, roleRepository);
-    }
+   // @BeforeEach
+   // public void setUp() {
+   //     authService = new AuthServiceImpl(userRepository, authenticationManager, tokenProvider, signUpDtoMapper, roleRepository, applicationEventPublisher);
+   // }
 
     @Test
     public void signUpTest() {

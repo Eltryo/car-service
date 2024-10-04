@@ -1,4 +1,4 @@
-package com.example.cargobay.service.impl;
+package com.example.cargobay.control.service.impl;
 
 import com.example.cargobay.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

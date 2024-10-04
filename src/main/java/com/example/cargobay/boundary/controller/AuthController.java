@@ -1,10 +1,7 @@
 package com.example.cargobay.boundary.controller;
 
-import com.example.cargobay.boundary.dtos.JwtDto;
-import com.example.cargobay.boundary.dtos.MessageResponseDto;
-import com.example.cargobay.boundary.dtos.SignInDto;
-import com.example.cargobay.boundary.dtos.SignUpRequestDto;
-import com.example.cargobay.service.AuthService;
+import com.example.cargobay.boundary.dtos.*;
+import com.example.cargobay.control.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +34,17 @@ public class AuthController {
 
         return ResponseEntity.ok(token);
     }
+    @PostMapping("/confirmRegistration")
+    public ResponseEntity<MessageResponseDto> confirmRegistration(@Valid @RequestBody VerificationTokenRequestDto token) {
+        authService.confirmRegistration(token.getToken());
+        return ResponseEntity.ok(new MessageResponseDto("Account was successfully confirmed"));
+    }
+
+    /**
+    @PostMapping("/resendRegistrationCode")
+    public ResponseEntity<MessageResponseDto> resendRegistrationCode(@Valid @RequestBody CredentialsRequestDto credentialsRequestDTO) {
+        verificationService.resendVerificationToken(credMapper.toCredentials(credentialsRequestDTO));
+        return ResponseEntity.ok(new MessageResponseDto("Wir haben dir erneut eine Email geschickt, mit einem Bestätigungs-Code, den du hier eingeben musst, um deinen Account freizuschalten."));
+    }
+    **/
 }
