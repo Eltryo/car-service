@@ -2,23 +2,13 @@ package com.example.cargobay.entity;
 
 import java.util.Collection;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.cargobay.utility.config.ApplicationUserRole;
-
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Table
 @Entity(name = "users")
@@ -34,13 +24,15 @@ public class User implements UserDetails {
     private String password;
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    private ApplicationUserRole role;
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public User(
             String login,
             String password,
-            ApplicationUserRole role,
+            Role role,
             String email
     ) {
         this.login = login;

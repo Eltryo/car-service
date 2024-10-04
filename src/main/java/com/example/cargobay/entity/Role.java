@@ -2,8 +2,10 @@ package com.example.cargobay.entity;
 
 import com.example.cargobay.utility.config.ApplicationUserRole;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "roles")
@@ -17,9 +19,13 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ApplicationUserRole name;
+    private ApplicationUserRole applicationUserRole;
 
     public Role(ApplicationUserRole role) {
-        this.name = role;
+        this.applicationUserRole = role;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.applicationUserRole.getAuthorities();
     }
 }

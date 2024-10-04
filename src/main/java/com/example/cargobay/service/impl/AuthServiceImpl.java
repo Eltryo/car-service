@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
 
         //todo: fix role handling
         var role = roleRepository.findByName(ApplicationUserRole.USER);
-        var newUser = new User(username, encryptedPassword, role.getName(), email);
+        var newUser = new User(username, encryptedPassword, role, email);
 
         var savedUser = userRepository.save(newUser);
         return signUpDtoMapper.toSignUpRequestDto(savedUser);

@@ -17,6 +17,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,7 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ExtendWith(MockitoExtension.class)
-public class AuthServiceTest {
+class AuthServiceTest {
     @Mock
     private UserRepository userRepository;
 
@@ -41,19 +42,18 @@ public class AuthServiceTest {
     @Mock
     private RoleRepository roleRepository;
 
-    @InjectMocks
     private AuthServiceImpl authService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         authService = new AuthServiceImpl(userRepository, authenticationManager, tokenProvider, signUpDtoMapper, roleRepository);
     }
 
     @Test
-    void signUpTest() {
+    public void signUpTest() {
         //given
-        User user = new User("user", "Password1!", ApplicationUserRole.USER, "user@gmail.de");
         Role role = new Role(ApplicationUserRole.USER);
+        User user = new User("user", "Password1!", role, "user@gmail.de");
         SignUpResponseDto dto = SignUpResponseDto.builder()
                 .username("user")
                 .email("user@gmail.de")
