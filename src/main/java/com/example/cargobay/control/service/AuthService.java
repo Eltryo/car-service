@@ -7,6 +7,8 @@ import com.example.cargobay.boundary.dtos.SignUpResponseDto;
 
 public interface AuthService {
     SignUpResponseDto signUp(SignUpRequestDto data);
+
     JwtDto signIn(SignInDto data);
+
     void confirmRegistration(String token);
 }

@@ -1,7 +1,10 @@
 package com.example.cargobay.entity;
 
 import com.example.cargobay.utility.config.ApplicationUserRole;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;

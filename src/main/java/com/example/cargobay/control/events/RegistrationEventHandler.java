@@ -1,5 +1,6 @@
 package com.example.cargobay.control.events;
 
+import com.example.cargobay.control.service.impl.MailServiceImpl;
 import com.example.cargobay.control.service.VerificationService;
 import com.example.cargobay.entity.User;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class RegistrationEventHandler implements ApplicationListener<OnRegistrationCompleteEvent> {
     private final VerificationService verificationService;
+    private final MailServiceImpl emailService;
 
     @Override
     public void onApplicationEvent(OnRegistrationCompleteEvent event) {
@@ -23,5 +25,6 @@ public class RegistrationEventHandler implements ApplicationListener<OnRegistrat
         String uuid = UUID.randomUUID().toString();
 
         verificationService.createVerificationToken(user, uuid);
+        emailService.sendVerificationMail(user.getEmail(), uuid);
     }
 }

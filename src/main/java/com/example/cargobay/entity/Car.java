@@ -1,15 +1,14 @@
 package com.example.cargobay.entity;
 
-import static javax.persistence.GenerationType.AUTO;
-
-import java.time.LocalDate;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
 
-import lombok.Data;
+import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 @Table(name = "cars")

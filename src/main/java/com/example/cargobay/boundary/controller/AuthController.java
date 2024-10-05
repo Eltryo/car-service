@@ -19,7 +19,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<MessageResponseDto> signUp(@RequestBody @Valid SignUpRequestDto data){
+    public ResponseEntity<MessageResponseDto> signUp(@RequestBody @Valid SignUpRequestDto data) {
         authService.signUp(data);
         var responseMessage = new MessageResponseDto("Sign up successful");
 
@@ -34,6 +34,7 @@ public class AuthController {
 
         return ResponseEntity.ok(token);
     }
+
     @PostMapping("/confirmRegistration")
     public ResponseEntity<MessageResponseDto> confirmRegistration(@Valid @RequestBody VerificationTokenRequestDto token) {
         authService.confirmRegistration(token.getToken());
@@ -41,10 +42,9 @@ public class AuthController {
     }
 
     /**
-    @PostMapping("/resendRegistrationCode")
-    public ResponseEntity<MessageResponseDto> resendRegistrationCode(@Valid @RequestBody CredentialsRequestDto credentialsRequestDTO) {
-        verificationService.resendVerificationToken(credMapper.toCredentials(credentialsRequestDTO));
-        return ResponseEntity.ok(new MessageResponseDto("Wir haben dir erneut eine Email geschickt, mit einem Bestätigungs-Code, den du hier eingeben musst, um deinen Account freizuschalten."));
-    }
-    **/
+     @PostMapping("/resendRegistrationCode") public ResponseEntity<MessageResponseDto> resendRegistrationCode(@Valid @RequestBody CredentialsRequestDto credentialsRequestDTO) {
+     verificationService.resendVerificationToken(credMapper.toCredentials(credentialsRequestDTO));
+     return ResponseEntity.ok(new MessageResponseDto("Wir haben dir erneut eine Email geschickt, mit einem Bestätigungs-Code, den du hier eingeben musst, um deinen Account freizuschalten."));
+     }
+     **/
 }

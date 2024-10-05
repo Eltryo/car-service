@@ -4,6 +4,7 @@ import com.example.cargobay.repository.UserRepository;
 import com.example.cargobay.utility.config.TokenProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -29,7 +30,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         var token = this.recoverToken(request);
         if (token != null) {
             var login = tokenProvider.validateToken(token);
-            var user = userRepository.findByLogin(login);
+            var user = userRepository.findByLogin(login).orElseThrow(() -> new UsernameNotFoundException(login));
             var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
